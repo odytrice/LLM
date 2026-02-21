@@ -1,0 +1,29 @@
+services:
+
+  jupyterlab:
+    image: odytrice/jupyterlab
+    restart: always
+    ports:
+      - "8080:8888"
+    volumes:
+      - ./Notebooks:/notebooks
+    environment:
+      - JUPYTER_TOKEN=docker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  infrastructure:
+    depends_on:
+      - jupyterlab
+    image: ubuntu
+    command: "echo 'Launching Infrastructure'"
+
+
+networks:
+  default:
+    name: llm

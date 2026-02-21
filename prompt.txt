@@ -1,0 +1,1 @@
+I want you to setup JupyterLab via docker compose use this image odytrice/jupyterlab. Also I want you to setup an infrastructure service like the one in D:/Projects/KubeBridges/Orange/docker-compose.yaml
